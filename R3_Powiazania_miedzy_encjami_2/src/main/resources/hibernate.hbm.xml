@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entity.Klient" table="klient">
+        <id name="id" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="imie" column="imie"/>
+        <property name="nazwisko" column="nazwisko"/>
+        <set cascade="persist" name="telefony" table="telefon" order-by="numer asc">
+            <key column="klient"/>
+            <one-to-many class="entity.Telefon"/>
+        </set>
+        <map cascade="persist" name="numeryModele" table="telefon" order-by="numer asc">
+            <key column="klient"/>
+            <map-key column="numer" type="java.lang.String"/>
+            <element column="model" type="java.lang.String"/>
+        </map>
+    </class>
+
+    <class name="entity.Telefon" table="telefon">
+        <id name="numer" column="numer"/>
+        <property name="model" column="model" />
+        <many-to-one name="klient" column="klient" />
+    </class>
+
+</hibernate-mapping>

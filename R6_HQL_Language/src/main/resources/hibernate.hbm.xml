@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entity.Klient" table="klient">
+        <id name="id" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="imie" column="imie"/>
+        <property name="nazwisko" column="nazwisko"/>
+        <set name="zamowienia" cascade="persist" inverse="true">
+            <key column="id"/>
+            <one-to-many class="entity.Zamowienie"/>
+        </set>
+        <joined-subclass name="entity.KlientFirmowy" table="klient_firmowy">
+            <key column="klient_id"/>
+            <property name="nazwaFirmy" column="nazwa_firmy"/>
+            <property name="NIP" column="NIP"/>
+        </joined-subclass>
+        <joined-subclass name="entity.KlientPrywatny" table="klient_prywatny">
+            <key column="klient_id"/>
+            <property name="dataUrodzenia" column="data_urodzenia"/>
+        </joined-subclass>
+    </class>
+
+    <class name="entity.Zamowienie" table="Zamowienie">
+        <id name="id" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="adres" column="adres"/>
+        <property name="data" column="data"/>
+        <many-to-one name="klient" column="klient" not-null="true"/>
+    </class>
+
+</hibernate-mapping>
