@@ -16,5 +16,7 @@ public class Main {
         EntityTransaction transaction = manager.getTransaction();
         transaction.commit();
         manager.close();
+
+        // test
     }
 }

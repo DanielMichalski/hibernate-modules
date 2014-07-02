@@ -15,8 +15,6 @@
             <property name="hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 
-            <property name="hibernate.ejb.event.post-collection-recreate" value=""
-            
         </properties>
     </persistence-unit>
 </persistence>

@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>R1_Tworzenie_klas_encji_i_plików_powiązań</module>
-        <module>R2 _Powiazania_miedzy_encjami</module>
+        <module>R2_Powiazania_miedzy_encjami</module>
         <module>R3_Powiazania_miedzy_encjami_2</module>
         <module>R4_Dziedziczenie_1</module>
         <module>R5_Dziedziczenie_2</module>
